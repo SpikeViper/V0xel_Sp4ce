@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V0xel Sp4ce.CSharp.Plugins", "V0xel Sp4ce.CSharp.Plugins.csproj", "{4333BE35-349E-DB6B-122A-098B4A7FE752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V0xel Sp4ce.CSharp", "V0xel Sp4ce.CSharp.csproj", "{E0ED1A2A-545D-9788-D263-63E6113ABAE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V0xel Sp4ce.CSharp.Editor", "V0xel Sp4ce.CSharp.Editor.csproj", "{D3D9917A-3BE7-DF1A-397A-5126075EEE2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4333BE35-349E-DB6B-122A-098B4A7FE752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4333BE35-349E-DB6B-122A-098B4A7FE752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4333BE35-349E-DB6B-122A-098B4A7FE752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4333BE35-349E-DB6B-122A-098B4A7FE752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0ED1A2A-545D-9788-D263-63E6113ABAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0ED1A2A-545D-9788-D263-63E6113ABAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0ED1A2A-545D-9788-D263-63E6113ABAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0ED1A2A-545D-9788-D263-63E6113ABAE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D9917A-3BE7-DF1A-397A-5126075EEE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D9917A-3BE7-DF1A-397A-5126075EEE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D9917A-3BE7-DF1A-397A-5126075EEE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D9917A-3BE7-DF1A-397A-5126075EEE2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

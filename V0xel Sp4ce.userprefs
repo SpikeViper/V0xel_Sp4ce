@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="V0xel Sp4ce.CSharp.Plugins.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Code\Player\LoadChunks.cs">
+    <Files>
+      <File FileName="Assets\Code\Player\LoadChunks.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Planet\Planet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Utility\MeshData.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Planet\PlanetChunk.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Planet\GeneratePlanet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Code\Block\Block.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
