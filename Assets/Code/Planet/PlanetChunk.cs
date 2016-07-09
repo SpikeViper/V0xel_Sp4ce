@@ -38,7 +38,7 @@ public class PlanetChunk : MonoBehaviour {
     Thread genthread;
 
 
-    // Use this for initialization
+    // Generates using a coroutine. This speedss things up ALOT. We also use a thread here to get some heavy calculations out of the main thread. 
     public IEnumerator<float> Generate()
     {
 
@@ -56,7 +56,7 @@ public class PlanetChunk : MonoBehaviour {
 
     }
 
-
+    //Gets a block (type) using coordinates. This will change to also support getting the block object itself.
     public BlockType GetBlock(int x, int y, int z)
     {
         int x2 = (int)Position.x;
@@ -103,7 +103,7 @@ public class PlanetChunk : MonoBehaviour {
 
     }
 
-
+    //Sets a block using coordinates and Type to set it to
     public void SetBlock(int x, int y, int z, BlockType type)
     {
 
@@ -190,7 +190,7 @@ public class PlanetChunk : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
+    // Updates the planetchunk.
     public void UpdatePlanetChunk () {
 
         updates = updates + 1;
