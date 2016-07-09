@@ -20,7 +20,6 @@ public class Planet : MonoBehaviour
 
     public bool update = true;
     public string PlanetType = "Rock";
-    public string chunkpath;
     public int Temperature;
     public int planetSize; 
     public GameObject[] players;
@@ -343,8 +342,11 @@ public class Planet : MonoBehaviour
 
     public void LoadChunk(Vector3 chunkpos)
     {
-        if (ischunkloaded[(int)chunkpos.x, (int)chunkpos.y, (int)chunkpos.z] == false)
-        {  
+        using (gstring.Block())
+        {
+
+            if (ischunkloaded[(int)chunkpos.x, (int)chunkpos.y, (int)chunkpos.z] == false)
+            {
 
                 if (localVars.ChunkPool.Pool.Count == 0)
                 {
@@ -359,7 +361,7 @@ public class Planet : MonoBehaviour
                     newchunk.transform.position = new Vector3(thisx + (chunkpos.x * chunklength), thisy + (chunkpos.y * chunklength), thisz + (chunkpos.z * chunklength));
                 }
 
-                chunkpath = chunkpos.x + " " + chunkpos.y + " " + chunkpos.z;
+                gstring chunkpath = chunkpos.x + " " + chunkpos.y + " " + chunkpos.z;
                 newchunk.name = chunkpath;
                 gamenewchunk = newchunk;
                 gamenewchunk.transform.parent = this.gameObject.transform;
@@ -392,8 +394,8 @@ public class Planet : MonoBehaviour
             }
 
 
-         
 
+        }
         
 
     }
@@ -463,6 +465,8 @@ public class Planet : MonoBehaviour
 
     public void loadfromfile (Vector3 chunkpos, PlanetChunk script)
     {
+
+        gstring chunkpath = chunkpos.x + " " + chunkpos.y + " " + chunkpos.z;
 
         script.meshData = new MeshData();
         script.coll = script.gameObject.GetComponent<MeshCollider>();

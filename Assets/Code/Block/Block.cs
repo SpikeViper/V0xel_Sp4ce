@@ -8,20 +8,21 @@ using System.Collections.Generic;
 public class Block
 {
     public BlockType type;
-    public bool blockupsolid;
-    public bool blockdownsolid;
-    public bool blockeastsolid;
-    public bool blockwestsolid;
-    public bool blocknorthsolid;
-    public bool blocksouthsolid;
 
     public Block(BlockType type1)
     {
         type = type1;
     }
 
+
+
     [System.SerializableAttribute()]
     public struct Tile { public int x; public int y;}
+
+    [System.SerializableAttribute()]
+    public struct SolidSides { public bool up; public bool down; public bool east; public bool west; public bool north; public bool south;}
+
+    public SolidSides solidsides;
 
 
     public MeshData Blockdata
@@ -37,27 +38,27 @@ public class Block
 
             meshData.useRenderDataForCol = true;
 
-            if (blockupsolid == false)
+            if (solidsides.up == false)
             {
                 meshData.BuildSideUp(x, y, z, this.type);
             }
-            if (blockdownsolid == false)
+            if (solidsides.down == false)
             {
                 meshData.BuildSideDown(x, y, z, this.type);
             }
-            if (blockeastsolid == false)
+            if (solidsides.east == false)
             {
                 meshData.BuildSideEast(x, y, z, this.type);
             }
-            if (blockwestsolid == false)
+            if (solidsides.west == false)
             {
                 meshData.BuildSideWest(x, y, z, this.type);
             }
-            if (blocknorthsolid == false)
+            if (solidsides.north == false)
             {
                 meshData.BuildSideNorth(x, y, z, this.type);
             }
-            if (blocksouthsolid == false)
+            if (solidsides.south == false)
             {
                 meshData.BuildSideSouth(x, y, z, this.type);
             }
@@ -70,7 +71,7 @@ public class Block
 
                 meshData.Light(type.light);
 
-                if (!blockupsolid && !blockdownsolid && !blockeastsolid && !blockwestsolid && !blocknorthsolid && !blocksouthsolid)
+                if (!solidsides.up && !solidsides.down && !solidsides.east && !solidsides.west && !solidsides.north && !solidsides.south)
                 {
                     meshData.AddLight(x, y, z, type.LR, type.LG, type.LB, type.LA, type.LightRange, type.LightIntensity);
                 }
@@ -88,27 +89,27 @@ public class Block
     {
 
 
-        if (blockupsolid == false)
+        if (solidsides.up == false)
         {
             meshData.AddFaceCount();
         }
-        if (blockdownsolid == false)
+        if (solidsides.down == false)
         {
             meshData.AddFaceCount();
         }
-        if (blockeastsolid == false)
+        if (solidsides.east == false)
         {
             meshData.AddFaceCount();
         }
-        if (blockwestsolid == false)
+        if (solidsides.west == false)
         {
             meshData.AddFaceCount();
         }
-        if (blocknorthsolid == false)
+        if (solidsides.north == false)
         {
             meshData.AddFaceCount();
         }
-        if (blocksouthsolid == false)
+        if (solidsides.south == false)
         {
             meshData.AddFaceCount();
         }
@@ -137,56 +138,56 @@ public class Block
 
         if (planetchunk.GetBlock(x, y + 1, z).IsSolid)
         {
-            blockupsolid = true;
+            solidsides.up = true;
         }
         else
         {
-            blockupsolid = false;
+            solidsides.up = false;
         }
 
         if (planetchunk.GetBlock(x, y - 1, z).IsSolid)
         {
-            blockdownsolid = true;
+            solidsides.down = true;
         }
         else
         {
-            blockdownsolid = false;
+            solidsides.down = false;
         }
 
         if (planetchunk.GetBlock(x, y, z + 1).IsSolid)
         {
-            blocknorthsolid = true;
+            solidsides.north = true;
         }
         else
         {
-            blocknorthsolid = false;
+            solidsides.north = false;
         }
 
         if (planetchunk.GetBlock(x, y, z - 1).IsSolid)
         {
-            blocksouthsolid = true;
+            solidsides.south = true;
         }
         else
         {
-            blocksouthsolid = false;
+            solidsides.south = false;
         }
 
         if (planetchunk.GetBlock(x + 1, y, z).IsSolid)
         {
-            blockeastsolid = true;
+            solidsides.east = true;
         }
         else
         {
-            blockeastsolid = false;
+            solidsides.east = false;
         }
 
         if (planetchunk.GetBlock(x - 1, y, z).IsSolid)
         {
-            blockwestsolid = true;
+            solidsides.west = true;
         }
         else
         {
-            blockwestsolid = false;
+            solidsides.west = false;
         }
 
     }
