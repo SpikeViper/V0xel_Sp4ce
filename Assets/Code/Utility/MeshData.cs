@@ -59,9 +59,9 @@ public class MeshData
     }
     public void Rebuild()
     {
-        vertices = new List<Vector3>(vertcount);
-        triangles = new List<int>(tricount);
-        uv = new List<Vector2>(uvcount);
+        vertices = new List<Vector3>(vertcount + 1);
+        triangles = new List<int>(tricount + 1);
+        uv = new List<Vector2>(uvcount + 1);
     }
 
     public void AddLight(int x, int y, int z, byte R, byte G, byte B, byte A, float range, float intensity)
