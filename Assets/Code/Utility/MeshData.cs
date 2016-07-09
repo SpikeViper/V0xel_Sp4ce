@@ -93,16 +93,9 @@ public class MeshData
     public void AddUVRange(Vector2[] vect2s)
     {
         uv.Add(vect2s[0]);
-        uvs++;
-
         uv.Add(vect2s[1]);
-        uvs++;
-
         uv.Add(vect2s[2]);
-        uvs++;
-
         uv.Add(vect2s[3]);
-        uvs++;
 
     }
 
@@ -130,18 +123,12 @@ public class MeshData
         v0 = verts - 1;
 
         triangles.Add(v3);
-        tris++;
         triangles.Add(v0);
-        tris++;
         triangles.Add(v1);
-        tris++;
 
         triangles.Add(v1);
-        tris++;
         triangles.Add(v2);
-        tris++;
         triangles.Add(v3);
-        tris++;
 
         AddUVRange(FaceUVs(Direction.up, type));
 
@@ -171,18 +158,12 @@ public class MeshData
         v3 = verts - 1;
 
         triangles.Add(v1);
-        tris++;
         triangles.Add(v0);
-        tris++;
         triangles.Add(v3);
-        tris++;
 
         triangles.Add(v1);
-        tris++;
         triangles.Add(v3);
-        tris++;
         triangles.Add(v2);
-        tris++;
 
         AddUVRange(FaceUVs(Direction.down, type));
 
@@ -213,18 +194,12 @@ public class MeshData
         v3 = verts - 1;
 
         triangles.Add(v0);
-        tris++;
         triangles.Add(v1);
-        tris++;
         triangles.Add(v3);
-        tris++;
 
         triangles.Add(v3);
-        tris++;
         triangles.Add(v1);
-        tris++;
         triangles.Add(v2);
-        tris++;
 
         AddUVRange(FaceUVs(Direction.west, type));
 
@@ -254,18 +229,12 @@ public class MeshData
         v3 = verts - 1;
 
         triangles.Add(v0);
-        tris++;
         triangles.Add(v1);
-        tris++;
         triangles.Add(v2);
-        tris++;
 
         triangles.Add(v0);
-        tris++;
         triangles.Add(v2);
-        tris++;
         triangles.Add(v3);
-        tris++;
 
         AddUVRange(FaceUVs(Direction.east, type));
 
@@ -295,18 +264,12 @@ public class MeshData
         v3 = verts - 1;
 
         triangles.Add(v0);
-        tris++;
         triangles.Add(v1);
-        tris++;
         triangles.Add(v3);
-        tris++;
 
         triangles.Add(v3);
-        tris++;
         triangles.Add(v1);
-        tris++;
         triangles.Add(v2);
-        tris++;
 
         AddUVRange(FaceUVs(Direction.north, type));
 
@@ -336,18 +299,12 @@ public class MeshData
         v3 = verts - 1;
 
         triangles.Add(v3);
-        tris++;
         triangles.Add(v0);
-        tris++;
         triangles.Add(v1);
-        tris++;
 
         triangles.Add(v3);
-        tris++;
         triangles.Add(v1);
-        tris++;
         triangles.Add(v2);
-        tris++;
 
         AddUVRange(FaceUVs(Direction.south, type));
 

@@ -32,6 +32,7 @@ public class PlanetChunk : MonoBehaviour {
     public GameObject[,,] lights;
     public bool modified;
     int timer;
+    public int updates;
     public int chunklength;
     public bool firstrender = true;
     Thread genthread;
@@ -58,6 +59,10 @@ public class PlanetChunk : MonoBehaviour {
 
     public BlockType GetBlock(int x, int y, int z)
     {
+        int x2 = (int)Position.x;
+        int y2 = (int)Position.y;
+        int z2 = (int)Position.z;
+
         if (x >= 0 && y >= 0 && z >= 0 && x < chunklength && y < chunklength && z < chunklength)
         {
             return blocks[x, y, z].type;
@@ -66,28 +71,28 @@ public class PlanetChunk : MonoBehaviour {
         {
 
             if (x > chunklength - 1) {
-                return planet.GetBlock(new Vector3(Position.x + 1, Position.y, Position.z), 0, y, z);
+                return planet.GetBlock(new Vector3(x2 + 1, y2, z2), 0, y, z);
             }
 
             if (x == -1) {
-                return planet.GetBlock(new Vector3(Position.x - 1, Position.y, Position.z), 15, y, z);
+                return planet.GetBlock(new Vector3(x2 - 1, y2, z2), 15, y, z);
             }
 
 
             if (y > chunklength - 1) {
-                return planet.GetBlock(new Vector3(Position.x, Position.y + 1, Position.z), x, 0, z);
+                return planet.GetBlock(new Vector3(x2, y2 + 1, z2), x, 0, z);
             }
 
             if (y == -1) {
-                return planet.GetBlock(new Vector3(Position.x, Position.y - 1, Position.z), x, 15, z);
+                return planet.GetBlock(new Vector3(x2, y2 - 1, z2), x, 15, z);
             }
 
             if (z > chunklength - 1) {
-                return planet.GetBlock(new Vector3(Position.x, Position.y, Position.z + 1), x, y, 0);
+                return planet.GetBlock(new Vector3(x2, y2, z2 + 1), x, y, 0);
             }
 
             if (z == -1) {
-                return planet.GetBlock(new Vector3(Position.x, Position.y, Position.z - 1), x, y, 15);
+                return planet.GetBlock(new Vector3(x2, y2, z2 - 1), x, y, 15);
             }
 
             return BlockTypes.typeStone;
@@ -102,41 +107,45 @@ public class PlanetChunk : MonoBehaviour {
     public void SetBlock(int x, int y, int z, BlockType type)
     {
 
+        int x2 = (int)Position.x;
+        int y2 = (int)Position.y;
+        int z2 = (int)Position.z;
+
         if (x >= 0 && y >= 0 && z >= 0 && x < chunklength && y < chunklength && z < chunklength)
         {
-            blocks[(int)x, (int)y, (int)z].type = type;
+            blocks[x, y, z].type = type;
             modified = true;
 
-            if (lights[(int)x, (int)y, (int)z] != null)
+            if (lights[x, y, z] != null)
             {
-                Destroy(lights[(int)x, (int)y, (int)z]);
-                lights[(int)x, (int)y, (int)z] = null;
+                Destroy(lights[x, y, z]);
+                lights[x, y, z] = null;
             }
 
 
             if (x == chunklength - 1)
             {
-                planet.UpdateChunk((int)Position.x + 1, (int)Position.y, (int)Position.z);
+                planet.UpdateChunk(x2, y2, z2);
             }
             else if (y == chunklength - 1)
             {
-                planet.UpdateChunk((int)Position.x, (int)Position.y + 1, (int)Position.z);
+                planet.UpdateChunk(x2, y2 + 1, z2);
             }
             else if (z == chunklength - 1)
             {
-                planet.UpdateChunk((int)Position.x, (int)Position.y, (int)Position.z + 1);
+                planet.UpdateChunk(x2, y2, z2 + 1);
             }
             else if (x < 0)
             {
-                planet.UpdateChunk((int)Position.x - 1, (int)Position.y, (int)Position.z);
+                planet.UpdateChunk(x2 - 1, y2, z2);
             }
             else if (y < 0)
             {
-                planet.UpdateChunk((int)Position.x, (int)Position.y - 1, (int)Position.z);
+                planet.UpdateChunk(x2, y2 - 1, z2);
             }
             else if (z < 0)
             {
-                planet.UpdateChunk((int)Position.x, (int)Position.y, (int)Position.z - 1);
+                planet.UpdateChunk(x2, y2, z2 - 1);
             }
 
 
@@ -147,27 +156,27 @@ public class PlanetChunk : MonoBehaviour {
 
             if (x > chunklength - 1)
             {
-                planet.SetBlock(new Vector3(Position.x + 1, Position.y, Position.z), 0, (int)y, (int)z, type);
+                planet.SetBlock(new Vector3(x2 + 1, y2, z2), 0, y, z, type);
             }
             else if (y > chunklength - 1)
             {
-                planet.SetBlock(new Vector3(Position.x, Position.y + 1, Position.z), (int)x, 0, (int)z, type);
+                planet.SetBlock(new Vector3(x2, y2 + 1, z2), x, 0, z, type);
             }
             else if (z > chunklength - 1)
             {
-                planet.SetBlock(new Vector3(Position.x, Position.y, Position.z + 1), (int)x, (int)y, 0, type);
+                planet.SetBlock(new Vector3(x2, y2, z2 + 1), x, y, 0, type);
             }
             else if (x < 0)
             {
-                planet.SetBlock(new Vector3(Position.x - 1, Position.y, Position.z), chunklength - 1, (int)y, (int)z, type);
+                planet.SetBlock(new Vector3(x2 - 1, y2, z2), chunklength - 1, y, z, type);
             }
             else if (y < 0)
             {
-                planet.SetBlock(new Vector3(Position.x, Position.y - 1, Position.z), (int)x, chunklength - 1, (int)z, type);
+                planet.SetBlock(new Vector3(x2, y2 - 1, z2), x, chunklength - 1, z, type);
             }
             else if (z < 0)
             {
-                planet.SetBlock(new Vector3(Position.x, Position.y, Position.z - 1), (int)x, (int)y, chunklength - 1, type);
+                planet.SetBlock(new Vector3(x2, y2, z2 - 1), x, y, chunklength - 1, type);
             }
 
             
@@ -184,6 +193,7 @@ public class PlanetChunk : MonoBehaviour {
     // Update is called once per frame
     public void UpdatePlanetChunk () {
 
+        updates = updates + 1;
 
         if (Generated == true)
         {
@@ -292,6 +302,7 @@ public class PlanetChunk : MonoBehaviour {
 
         filter.sharedMesh = mesh;
         coll.sharedMesh = colmesh;
+        colmesh.RecalculateNormals();
         filter.sharedMesh.RecalculateNormals();
 
         firstrender = false;

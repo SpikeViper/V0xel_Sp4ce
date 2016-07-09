@@ -34,6 +34,8 @@ public class LoadChunks : MonoBehaviour {
     public float lasty = 1;
     public float lastz = 1;
 
+    public bool Generate;
+
     public float length;
 
     public float Range = 1;
@@ -45,6 +47,9 @@ public class LoadChunks : MonoBehaviour {
 
     // Update is called once per frame
     public void Update () {
+
+        if (Generate == true)
+        {
 
             if (planet == null)
             {
@@ -61,87 +66,87 @@ public class LoadChunks : MonoBehaviour {
             y2 = this.transform.position.y;
             z2 = this.transform.position.z;
 
-        //Check if the player has moved, skip a few calculations if they didn't
-        if (x2 != lastx || y2 != lasty || z2 != lastz || LoadList.Count == 0)
-        {
-
-
-            if (LoadList.Count == 0)
+            //Check if the player has moved, skip a few calculations if they didn't
+            if (x2 != lastx || y2 != lasty || z2 != lastz || LoadList.Count == 0)
             {
-                Range = Range + 1;
-            }
-
-            if (x2 != lastx || y2 != lasty || z2 != lastz)
-            {
-         
-                lastx = x;
-                lasty = y;
-                lastz = z;
-
-                //Normalizing position with planet position
-                x3 = x2 - planetx;
-                y3 = y2 - planety;
-                z3 = z2 - planetz;
-
-                //Converts into chunk position
-                x = Mathf.FloorToInt(x3 / (float)localVars.chunklength);
-                y = Mathf.FloorToInt(y3 / (float)localVars.chunklength);
-                z = Mathf.FloorToInt(z3 / (float)localVars.chunklength);
-
-            }
-
-            if (Range < maxRange)
-            {
-                LoadList.Clear();
 
 
-                for (int x1 = (int)(x - Range); x1 <= x + Range; x1++)
+                if (LoadList.Count == 0)
                 {
-                    if (x1 >= 0 && x1 < length)
+                    Range = Range + 1;
+                }
+
+                if (x2 != lastx || y2 != lasty || z2 != lastz)
+                {
+
+                    lastx = x;
+                    lasty = y;
+                    lastz = z;
+
+                    //Normalizing position with planet position
+                    x3 = x2 - planetx;
+                    y3 = y2 - planety;
+                    z3 = z2 - planetz;
+
+                    //Converts into chunk position
+                    x = Mathf.FloorToInt(x3 / (float)localVars.chunklength);
+                    y = Mathf.FloorToInt(y3 / (float)localVars.chunklength);
+                    z = Mathf.FloorToInt(z3 / (float)localVars.chunklength);
+
+                }
+
+                if (Range < maxRange)
+                {
+                    LoadList.Clear();
+
+
+                    for (int x1 = (int)(x - Range); x1 <= x + Range; x1++)
                     {
-                        for (int y1 = (int)(y - Range); y1 <= y + Range; y1++)
+                        if (x1 >= 0 && x1 < length)
                         {
-                            if (y1 >= 0 && y1 < length)
+                            for (int y1 = (int)(y - Range); y1 <= y + Range; y1++)
                             {
-                                for (int z1 = (int)(z - Range); z1 <= z + Range; z1++)
+                                if (y1 >= 0 && y1 < length)
                                 {
-                                    if (z1 >= 0 && z1 < length)
+                                    for (int z1 = (int)(z - Range); z1 <= z + Range; z1++)
                                     {
-                                        dis = (x - x1) * (x - x1) + (y - y1) * (y - y1) + (z - z1) * (z - z1);
-
-                                        if (planet.ischunkloaded[x1, y1, z1] != true)
+                                        if (z1 >= 0 && z1 < length)
                                         {
-                                            LoadList.Add(new Vector4(x1, y1, z1, dis));
-                                        }
+                                            dis = (x - x1) * (x - x1) + (y - y1) * (y - y1) + (z - z1) * (z - z1);
 
+                                            if (planet.ischunkloaded[x1, y1, z1] != true)
+                                            {
+                                                LoadList.Add(new Vector4(x1, y1, z1, dis));
+                                            }
+
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+
+                    LoadList.Sort(sort);
                 }
 
-                LoadList.Sort(sort);
             }
 
+            if (Range > maxRange)
+            {
+                Range = 1;
+            }
+
+
+            if (LoadList.Count > 0)
+            {
+                Vector3 newchunk = LoadList[0];
+                LoadList.RemoveAt(0);
+                planet.LoadChunk(new Vector3(newchunk.x, newchunk.y, newchunk.z));
+            }
+
+
+
         }
-
-       if (Range > maxRange)
-       {
-            Range = 1;
-       }
-
-
-       if (LoadList.Count > 0)
-       {
-           Vector3 newchunk = LoadList[0];
-           LoadList.RemoveAt(0);
-           planet.LoadChunk(new Vector3(newchunk.x, newchunk.y, newchunk.z));
-       }
-
-        
-
-
         
 	}
 

@@ -34,7 +34,7 @@ namespace System.Collections.Generic
     [Serializable]
     public class ResizeableArray<T>
     {
-        private const int _defaultCapacity = 12000;
+        private const int _defaultCapacity = 0;
 
         public T[] _items;
         public T[] newItems;

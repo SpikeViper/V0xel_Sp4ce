@@ -67,23 +67,23 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Security">
-      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Apple">
-      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Apple\Apple.dll</HintPath>
-    </Reference>
     <Reference Include="Common">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Editor">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Security">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Security.dll</HintPath>
     </Reference>
     <Reference Include="Stores">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Stores.dll</HintPath>
     </Reference>
+    <Reference Include="Apple">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Apple\Apple.dll</HintPath>
+    </Reference>
     <Reference Include="winrt">
       <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
-    </Reference>
-    <Reference Include="Editor">
-      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -107,7 +107,6 @@
     <Compile Include="Assets\Code\Player\LoadChunks.cs" />
     <Compile Include="Assets\Code\Player\ModifyBlocks.cs" />
     <Compile Include="Assets\Code\Utility\Chunkpool.cs" />
-    <Compile Include="Assets\Code\Utility\GCManager.cs" />
     <Compile Include="Assets\Code\Utility\KDTree.cs" />
     <Compile Include="Assets\Code\Utility\LightData.cs" />
     <Compile Include="Assets\Code\Utility\MeshData.cs" />
