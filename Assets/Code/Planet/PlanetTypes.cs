@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public static class PlanetTypes {
 
     public static PlanetType typeRock;
+    public static PlanetType typeLava;
+    public static PlanetType typeIce;
+
+    //Allows for simple planet addition.
 
     static PlanetTypes()
     {
@@ -27,6 +31,16 @@ public static class PlanetTypes {
                 BlockTypes.typeOreIron,
                 BlockTypes.typeOreUranium
             }
+
+        };
+
+        typeLava = new PlanetType
+        {
+
+        };
+
+        typeIce = new PlanetType
+        {
 
         };
 
