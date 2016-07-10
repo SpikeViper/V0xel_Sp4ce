@@ -5,8 +5,8 @@ Goal: To make an endless Voxel universe with as little lag as possible and suppo
 To Contribute: Just push to the master for now, only the scripts you changed. I may change this later.
 
 TODO:
-Fix Mesh Garbage
-Add Spaceships
-Add AI
-Make Solar Systems
-Add Galaxies
+Fix Mesh Garbage;
+Add Spaceships;
+Add AI;
+Make Solar Systems;
+Add Galaxies;
