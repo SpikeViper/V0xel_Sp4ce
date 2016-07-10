@@ -1,12 +1,22 @@
 # V0xel_Sp4ce
-An indie voxel space game.
-For those who want a better game.
-Goal: To make an endless Voxel universe with as little lag as possible and support for AI, spaceships, machines, and modding capability.
-To Contribute: Just push to the master for now, only the scripts you changed. I may change this later.
 
-TODO:
-Fix Mesh Garbage;
-Add Spaceships;
-Add AI;
-Make Solar Systems;
-Add Galaxies;
+>V0xel_Sp4ce is a work-in-progress voxel-based space game that will support modding and be easily modifiable.
+>Anyone is free to help develop and will be credited in the main releae of the game.
+
+It currently includes
+  - Blocks (Easy to make and modify)
+  - Planets (Also easy to make and modify)
+  - A chunk system
+  - WIP saving and loading
+  - Mobile device support
+
+Currently being worked on is:
+  - Optimization
+  - Models/Textures
+  - Machines
+  - Spaceships
+  - Solar Systems
+  - More!
+
+### License:
+Currently under the MIT license so anyone can help out! Once it hits a beta release, the main version of this game will be put on steam, but all alphas will still be free to play, and all contributers will be credited.
