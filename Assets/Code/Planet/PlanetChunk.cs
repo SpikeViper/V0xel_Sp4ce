@@ -6,7 +6,6 @@ using UnityEngine.Serialization;
 using System.IO;
 using UnityThreading;
 using System.Linq;
-using MovementEffects;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -39,7 +38,7 @@ public class PlanetChunk : MonoBehaviour {
 
 
     // Generates using a coroutine. This speedss things up ALOT. We also use a thread here to get some heavy calculations out of the main thread. 
-    public IEnumerator<float> Generate()
+    public IEnumerator Generate()
     {
 
         chunklength = localVars.chunklength;
@@ -50,7 +49,7 @@ public class PlanetChunk : MonoBehaviour {
         this.filter = this.gameObject.GetComponent<MeshFilter>();
         genthread = new Thread(() => { blocks = planet.Generator.Generate(blocks, "rock", planet.planetSize, planet.planetSeed, (int)Position.x, (int)Position.y, (int)Position.z);});
         genthread.Start();
-        while (genthread.IsAlive == true) { yield return 0f; }
+        while (genthread.IsAlive == true) { yield return null; }
 
         Generated = true;
 
