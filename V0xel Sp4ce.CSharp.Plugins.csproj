@@ -89,7 +89,6 @@
   <ItemGroup>
     <Compile Include="Assets\Plugins\MeshExtrusion.cs" />
     <Compile Include="Assets\Plugins\Perlin.cs" />
-    <Compile Include="Assets\Plugins\Trinary Software\Timing.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\ComboBox.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPDemo.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\UnibillDemo.cs" />

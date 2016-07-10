@@ -102,17 +102,21 @@ public class PlanetChunk : MonoBehaviour {
 
     }
 
+
+
     //Sets a block using coordinates and Type to set it to
-    public void SetBlock(int x, int y, int z, BlockType type)
+    public void SetBlock(int x, int y, int z, BlockType typenew)
     {
 
         int x2 = (int)Position.x;
         int y2 = (int)Position.y;
         int z2 = (int)Position.z;
 
-        if (x >= 0 && y >= 0 && z >= 0 && x < chunklength && y < chunklength && z < chunklength)
+        Debug.Log(x + " " + y + " " + z);
+
+        if (x != -1 && y != -1 && z != -1 && x < chunklength && y < chunklength && z < chunklength)
         {
-            blocks[x, y, z].type = type;
+            blocks[x, y, z].type = typenew;
             modified = true;
 
             if (lights[x, y, z] != null)
@@ -121,33 +125,6 @@ public class PlanetChunk : MonoBehaviour {
                 lights[x, y, z] = null;
             }
 
-
-            if (x == chunklength - 1)
-            {
-                planet.UpdateChunk(x2, y2, z2);
-            }
-            else if (y == chunklength - 1)
-            {
-                planet.UpdateChunk(x2, y2 + 1, z2);
-            }
-            else if (z == chunklength - 1)
-            {
-                planet.UpdateChunk(x2, y2, z2 + 1);
-            }
-            else if (x < 0)
-            {
-                planet.UpdateChunk(x2 - 1, y2, z2);
-            }
-            else if (y < 0)
-            {
-                planet.UpdateChunk(x2, y2 - 1, z2);
-            }
-            else if (z < 0)
-            {
-                planet.UpdateChunk(x2, y2, z2 - 1);
-            }
-
-
         }
         else
         {
@@ -155,27 +132,27 @@ public class PlanetChunk : MonoBehaviour {
 
             if (x > chunklength - 1)
             {
-                planet.SetBlock(new Vector3(x2 + 1, y2, z2), 0, y, z, type);
+                planet.SetBlock(new Vector3(x2 + 1, y2, z2), 0, y, z, typenew);
             }
             else if (y > chunklength - 1)
             {
-                planet.SetBlock(new Vector3(x2, y2 + 1, z2), x, 0, z, type);
+                planet.SetBlock(new Vector3(x2, y2 + 1, z2), x, 0, z, typenew);
             }
             else if (z > chunklength - 1)
             {
-                planet.SetBlock(new Vector3(x2, y2, z2 + 1), x, y, 0, type);
+                planet.SetBlock(new Vector3(x2, y2, z2 + 1), x, y, 0, typenew);
             }
             else if (x < 0)
             {
-                planet.SetBlock(new Vector3(x2 - 1, y2, z2), chunklength - 1, y, z, type);
+                planet.SetBlock(new Vector3(x2 - 1, y2, z2), chunklength - 1, y, z, typenew);
             }
             else if (y < 0)
             {
-                planet.SetBlock(new Vector3(x2, y2 - 1, z2), x, chunklength - 1, z, type);
+                planet.SetBlock(new Vector3(x2, y2 - 1, z2), x, chunklength - 1, z, typenew);
             }
             else if (z < 0)
             {
-                planet.SetBlock(new Vector3(x2, y2, z2 - 1), x, y, chunklength - 1, type);
+                planet.SetBlock(new Vector3(x2, y2, z2 - 1), x, y, chunklength - 1, typenew);
             }
 
             
