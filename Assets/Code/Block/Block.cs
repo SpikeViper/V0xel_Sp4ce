@@ -151,7 +151,7 @@ public class Block
     /// <summary>
     /// Gets whether or not the blocks next to this one are solid. Used to determine which sides to render.
     /// </summary>
-    /// <param name="planetchunk">The planetchunk this block is contained by</param>
+    /// <param name="planetchunk">The planetchunk this block is contained by.</param>
     /// <param name="x">The X coordinate of the Block</param>
     /// <param name="y">The Y coordinate of the Block</param>
     /// <param name="z">The Z coordinate of the Block</param>
