@@ -6,7 +6,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
 using UnityThreading;
-using MovementEffects;
 
 
 
@@ -361,7 +360,10 @@ public class Planet : MonoBehaviour
                     newchunk.transform.position = new Vector3(thisx + (chunkpos.x * chunklength), thisy + (chunkpos.y * chunklength), thisz + (chunkpos.z * chunklength));
                 }
 
-                gstring chunkpath = chunkpos.x + " " + chunkpos.y + " " + chunkpos.z;
+
+
+
+                gstring chunkpath = gstring.Concat(chunkpos.x, " ", chunkpos.y, " ", chunkpos.z);
                 newchunk.name = chunkpath;
                 gamenewchunk = newchunk;
                 gamenewchunk.transform.parent = this.gameObject.transform;
@@ -379,7 +381,7 @@ public class Planet : MonoBehaviour
                 }
                 else
                 {
-                    Timing.RunCoroutine(script.Generate());
+                    StartCoroutine(script.Generate());
                 }
 
                 planetchunks[(int)chunkpos.x, (int)chunkpos.y, (int)chunkpos.z] = script;
