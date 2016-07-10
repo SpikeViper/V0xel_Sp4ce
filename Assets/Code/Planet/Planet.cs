@@ -199,10 +199,6 @@ public class Planet : MonoBehaviour
         int cy = (int)Chunkpos.y;
         int cz = (int)Chunkpos.z;
 
-        if (ischunkloaded[cx, cy, cz] == false)
-        {
-            LoadChunk(Chunkpos);
-        }
         planetchunks[cx, cy, cz].SetBlock(x, y, z, type);
 
     }
