@@ -21,5 +21,8 @@ Currently being worked on is:
 ### Contribute:
 Grab a fork and get to work! Any features that fit the feel of the game will be accepted, as long as they are well-optimized and documented.
 
+### Unity:
+This project will be maintained in the newest *BETA* of Unity.
+
 ### License:
 Currently under the MIT license so anyone can help out! Once it hits a beta release, the main version of this game will be put on steam, but all alphas will still be free to play, and all contributers will be credited.
