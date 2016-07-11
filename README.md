@@ -1,7 +1,7 @@
 # V0xel_Sp4ce
 
 >V0xel_Sp4ce is a work-in-progress voxel-based space game that will support modding and be easily modifiable.
->Anyone is free to help develop and will be credited in the main releae of the game.
+>Anyone is free to help develop and will be credited in the main release of the game.
 
 It currently includes
   - Blocks (Easy to make and modify)
