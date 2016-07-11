@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class Block
 {
-    public BlockType type;
+    private BlockType type;
 
     public Block(BlockType type1)
     {
@@ -213,6 +213,16 @@ public class Block
             west = false;
         }
 
+    }
+
+    public void SetType(BlockType newtype)
+    {
+        this.type = newtype;
+    }
+
+    public BlockType GetType()
+    {
+        return this.type;
     }
 
 }

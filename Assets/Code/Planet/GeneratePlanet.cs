@@ -140,14 +140,14 @@ public class GeneratePlanet
                     for (int z = 0; z < chunklength; z++)
                     {
 
-                        if (blocks[x, y, z].type != empty)
+                        if (blocks[x, y, z].GetType() != empty)
                         {
 
                             value = CaveGen.GetValue(new Vector3(x + nx, y + ny, z + nz));
 
                             if (value > 0)
                             {
-                                blocks[x, y, z].type = empty;
+                                blocks[x, y, z].SetType(empty);
                             }
 
                         }
@@ -179,7 +179,7 @@ public class GeneratePlanet
                     {
                         int z5 = z * 2;
 
-                        if (blocks[x5, y5, z5].type != empty)
+                        if (blocks[x5, y5, z5].GetType() != empty)
                         {
 
                             for (int i = 0; i < OreTypes.Count; i++)
@@ -187,113 +187,113 @@ public class GeneratePlanet
 
                                 ore = OreTypes[i];
 
-                                if (blocks[x5, y5, z5].type == ore.BaseBlock)
+                                if (blocks[x5, y5, z5].GetType() == ore.BaseBlock)
                                 {
 
                                     value2 = OreGen.GetValue(new Vector3(x5 + nx, y5 + ny, z5 + nz));
 
                                     if (value2 > ore.rarity)
                                     {
-                                        blocks[x5, y5, z5].type = ore;
+                                        blocks[x5, y5, z5].SetType(ore);
 
                                         if (x5 != chunklength)
                                         {
-                                            blocks[x5 + 1, y5, z5].type = ore;
+                                            blocks[x5 + 1, y5, z5].SetType(ore);
                                         }
                                         if (y5 != chunklength)
                                         {
-                                            blocks[x5, y5 + 1, z5].type = ore;
+                                            blocks[x5, y5 + 1, z5].SetType(ore);
                                         }
                                         if (z5 != chunklength)
                                         {
-                                            blocks[x5, y5, z5 + 1].type = ore;
+                                            blocks[x5, y5, z5 + 1].SetType(ore);
                                         }
                                         if (x5 != 0)
                                         {
-                                            blocks[x5 - 1, y5, z5].type = ore;
+                                            blocks[x5 - 1, y5, z5].SetType(ore);
                                         }
                                         if (y5 != 0)
                                         {
-                                            blocks[x5, y5 - 1, z5].type = ore;
+                                            blocks[x5, y5 - 1, z5].SetType(ore);
                                         }
                                         if (z5 != 0)
                                         {
-                                            blocks[x5, y5, z5 - 1].type = ore;
+                                            blocks[x5, y5, z5 - 1].SetType(ore);
                                         }
                                         ////////////////////////////////////
                                         if (x5 < chunklength - 2)
                                         {
-                                            blocks[x5 + 2, y5, z5].type = ore;
+                                            blocks[x5 + 2, y5, z5].SetType(ore);
                                         }
                                         if (y5 < chunklength - 2)
                                         {
-                                            blocks[x5, y5 + 2, z5].type = ore;
+                                            blocks[x5, y5 + 2, z5].SetType(ore);
                                         }
                                         if (z5 < chunklength - 2)
                                         {
-                                            blocks[x5, y5, z5 + 2].type = ore;
+                                            blocks[x5, y5, z5 + 2].SetType(ore);
                                         }
                                         if (x5 > 1)
                                         {
-                                            blocks[x5 - 2, y5, z5].type = ore;
+                                            blocks[x5 - 2, y5, z5].SetType(ore);
                                         }
                                         if (y5 > 1)
                                         {
-                                            blocks[x5, y5 - 2, z5].type = ore;
+                                            blocks[x5, y5 - 2, z5].SetType(ore);
                                         }
                                         if (z5 > 1)
                                         {
-                                            blocks[x5, y5, z5 - 2].type = ore;
+                                            blocks[x5, y5, z5 - 2].SetType(ore);
                                         }
                                         ////////////////////////////////////
                                         if (x5 != 0 && z5 != 0)
                                         {
-                                            blocks[x5 - 1, y5, z5 - 1].type = ore;
+                                            blocks[x5 - 1, y5, z5 - 1].SetType(ore);
                                         }
                                         if (x5 != 0 && y5 != 0)
                                         {
-                                            blocks[x5 - 1, y5 - 1, z5].type = ore;
+                                            blocks[x5 - 1, y5 - 1, z5].SetType(ore);
                                         }
                                         if (z5 != 0 && y5 != 0)
                                         {
-                                            blocks[x5, y5 - 1, z5 - 1].type = ore;
+                                            blocks[x5, y5 - 1, z5 - 1].SetType(ore);
                                         }
                                         if (x5 != chunklength && z5 != chunklength)
                                         {
-                                            blocks[x5 + 1, y5, z5 + 1].type = ore;
+                                            blocks[x5 + 1, y5, z5 + 1].SetType(ore);
                                         }
                                         if (x5 != chunklength && y5 != chunklength)
                                         {
-                                            blocks[x5 + 1, y5 + 1, z5].type = ore;
+                                            blocks[x5 + 1, y5 + 1, z5].SetType(ore);
                                         }
                                         if (z5 != chunklength && y5 != chunklength)
                                         {
-                                            blocks[x5, y5 + 1, z5 + 1].type = ore;
+                                            blocks[x5, y5 + 1, z5 + 1].SetType(ore);
                                         }
                                         ////////////////////////////////////
                                         if (x5 != 0 && y5 != 0 && z5 != 0)
                                         {
-                                            blocks[x5 - 1, y5 - 1, z5 - 1].type = ore;
+                                            blocks[x5 - 1, y5 - 1, z5 - 1].SetType(ore);
                                         }
                                         if (x5 != chunklength && y5 != chunklength && z5 != chunklength)
                                         {
-                                            blocks[x5 + 1, y5 + 1, z5 + 1].type = ore;
+                                            blocks[x5 + 1, y5 + 1, z5 + 1].SetType(ore);
                                         }
                                         if (x5 != 0 && y5 != chunklength && z5 != chunklength)
                                         {
-                                            blocks[x5 - 1, y5 + 1, z5 + 1].type = ore;
+                                            blocks[x5 - 1, y5 + 1, z5 + 1].SetType(ore);
                                         }
                                         if (x5 != 0 && y5 != 0 && z5 != chunklength)
                                         {
-                                            blocks[x5 - 1, y5 - 1, z5 + 1].type = ore;
+                                            blocks[x5 - 1, y5 - 1, z5 + 1].SetType(ore);
                                         }
                                         if (x5 != chunklength && y5 != 0 && z5 != chunklength)
                                         {
-                                            blocks[x5 + 1, y5 - 1, z5 + 1].type = ore;
+                                            blocks[x5 + 1, y5 - 1, z5 + 1].SetType(ore);
                                         }
                                         if (x5 != chunklength && y5 != chunklength && z5 != 0)
                                         {
-                                            blocks[x5 + 1, y5 + 1, z5 - 1].type = ore;
+                                            blocks[x5 + 1, y5 + 1, z5 - 1].SetType(ore);
                                         }
 
                                     }
