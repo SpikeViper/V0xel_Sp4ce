@@ -65,7 +65,7 @@ public class PlanetChunk : MonoBehaviour
 
         if (x >= 0 && y >= 0 && z >= 0 && x < chunklength && y < chunklength && z < chunklength)
         {
-            return blocks[x, y, z].type;
+            return blocks[x, y, z].GetType();
         }
         else
         {
@@ -123,7 +123,7 @@ public class PlanetChunk : MonoBehaviour
 
         if (x > -1 && y > -1 && z > -1 && x < chunklength && y < chunklength && z < chunklength)
         {
-            blocks[x, y, z].type = typenew;
+            blocks[x, y, z].SetType(typenew);
             modified = true;
 
             if (lights[x, y, z] != null)
@@ -191,7 +191,7 @@ public class PlanetChunk : MonoBehaviour
                     for (int z = 0; z < chunklength; z++)
                     {
 
-                        if (blocks[x, y, z].type != BlockTypes.typeEmpty)
+                        if (blocks[x, y, z].GetType() != BlockTypes.typeEmpty)
                         {
                             blocks[x, y, z].PreCount(meshData);
                         }
@@ -211,7 +211,7 @@ public class PlanetChunk : MonoBehaviour
                     for (int z = 0; z < chunklength; z++)
                     {
 
-                        if (blocks[x, y, z].type != BlockTypes.typeEmpty)
+                        if (blocks[x, y, z].GetType() != BlockTypes.typeEmpty)
                         {
                             meshData = blocks[x, y, z].Blockdata(this, x, y, z, meshData);
                         }

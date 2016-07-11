@@ -183,7 +183,7 @@ public class Planet : MonoBehaviour
 
         if (ischunkloaded[cx, cy, cz] == true && planetchunks[cx, cy, cz].Generated == true)
         {
-            return planetchunks[cx, cy, cz].blocks[x, y, z].type;
+            return planetchunks[cx, cy, cz].blocks[x, y, z].GetType();
         }
         else
         {
