@@ -14,7 +14,7 @@ public class ModifyBlocks : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 100))
             {
-                hit.collider.gameObject.transform.parent.GetComponent<Planet>().SetBlock(hit, BlockTypes.typeEmpty, false);
+                hit.collider.gameObject.transform.GetComponent<PlanetChunk>().SetBlock(hit, BlockTypes.typeEmpty, false);
 
             }
         }
@@ -23,7 +23,7 @@ public class ModifyBlocks : MonoBehaviour
                 RaycastHit hit2;
                 if (Physics.Raycast(transform.position, transform.forward, out hit2, 100))
                 {
-                    hit2.collider.gameObject.transform.parent.GetComponent<Planet>().SetBlock(hit2, BlockTypes.typeCore, true);
+                    hit2.collider.gameObject.transform.GetComponent<PlanetChunk>().SetBlock(hit2, BlockTypes.typeCore, true);
                     
 
                 }
@@ -33,7 +33,7 @@ public class ModifyBlocks : MonoBehaviour
                 RaycastHit hit3;
                 if (Physics.Raycast(transform.position, transform.forward, out hit3, 100))
                 {
-                    hit3.collider.gameObject.transform.parent.GetComponent<Planet>().SetBlock(hit3, BlockTypes.typeGlass, true);
+                    hit3.collider.gameObject.transform.GetComponent<PlanetChunk>().SetBlock(hit3, BlockTypes.typeGlass, true);
 
                 }
             }

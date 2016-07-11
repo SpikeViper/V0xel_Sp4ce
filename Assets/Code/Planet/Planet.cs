@@ -282,57 +282,7 @@ public class Planet : MonoBehaviour
         //UnloadChunks();
     }
 
-    public void SetBlock(RaycastHit hit, BlockType type, bool adjacent = false)
-    {
-        PlanetChunk planetchunk = hit.collider.GetComponent<PlanetChunk>();
 
-        Vector3 pos = GetBlockPos(hit, planetchunk, adjacent);
-
-        int x = (int)pos.x;
-        int y = (int)pos.y;
-        int z = (int)pos.z;
-
-        x = Mathf.RoundToInt(x);
-        y = Mathf.RoundToInt(y);
-        z = Mathf.RoundToInt(z);
-
-        planetchunk.SetBlock(x, y, z, type);
-    }
-
-    public Vector3 GetBlockPos(RaycastHit hit, PlanetChunk chunk, bool adjacent = false)
-    {
-
-
-        Vector3 WorldSpace = new Vector3(
-        MoveWithinBlock(hit.point.x, hit.normal.x, adjacent),
-        MoveWithinBlock(hit.point.y, hit.normal.y, adjacent),
-        MoveWithinBlock(hit.point.z, hit.normal.z, adjacent)
-        );
-
-        Vector3 NewWorldSpace = new Vector3(WorldSpace.x - (chunk.Position.x * chunklength) - thisx, WorldSpace.y - (chunk.Position.y * chunklength) - thisy, WorldSpace.z - (chunk.Position.z * chunklength) - thisz);
-
-        return NewWorldSpace;
-
-
-
-    }
-
-    static float MoveWithinBlock(float pos, float norm, bool adjacent = false)
-    {
-        if (pos - (int)pos == 0.5f || pos - (int)pos == -0.5f)
-        {
-            if (adjacent)
-            {
-                pos += (norm / 2);
-            }
-            else
-            {
-                pos -= (norm / 2);
-            }
-        }
-
-        return (float)pos;
-    }
 
 
     public void LoadChunk(Vector3 chunkpos)

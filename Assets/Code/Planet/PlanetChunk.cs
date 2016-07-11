@@ -12,7 +12,8 @@ using System.Linq;
 [RequireComponent(typeof(MeshCollider))]
 
 
-public class PlanetChunk : MonoBehaviour {
+public class PlanetChunk : MonoBehaviour
+{
 
     public MeshData meshData;
     public Block[,,] blocks = new Block[localVars.chunklength, localVars.chunklength, localVars.chunklength];
@@ -26,7 +27,7 @@ public class PlanetChunk : MonoBehaviour {
     public int StarDistance;
     public Planet planet;
     public Vector3 Position;
-    public bool Generated = false; 
+    public bool Generated = false;
     public bool FirstUpdate = false;
     public GameObject[,,] lights;
     public bool modified;
@@ -47,7 +48,7 @@ public class PlanetChunk : MonoBehaviour {
         mesh = new Mesh();
         this.coll = this.gameObject.GetComponent<MeshCollider>();
         this.filter = this.gameObject.GetComponent<MeshFilter>();
-        genthread = new Thread(() => { blocks = planet.Generator.Generate(blocks, "rock", planet.planetSize, planet.planetSeed, (int)Position.x, (int)Position.y, (int)Position.z);});
+        genthread = new Thread(() => { blocks = planet.Generator.Generate(blocks, "rock", planet.planetSize, planet.planetSeed, (int)Position.x, (int)Position.y, (int)Position.z); });
         genthread.Start();
         while (genthread.IsAlive == true) { yield return null; }
 
@@ -69,28 +70,34 @@ public class PlanetChunk : MonoBehaviour {
         else
         {
 
-            if (x > chunklength - 1) {
+            if (x > chunklength - 1)
+            {
                 return planet.GetBlock(new Vector3(x2 + 1, y2, z2), 0, y, z);
             }
 
-            if (x == -1) {
+            if (x == -1)
+            {
                 return planet.GetBlock(new Vector3(x2 - 1, y2, z2), 15, y, z);
             }
 
 
-            if (y > chunklength - 1) {
+            if (y > chunklength - 1)
+            {
                 return planet.GetBlock(new Vector3(x2, y2 + 1, z2), x, 0, z);
             }
 
-            if (y == -1) {
+            if (y == -1)
+            {
                 return planet.GetBlock(new Vector3(x2, y2 - 1, z2), x, 15, z);
             }
 
-            if (z > chunklength - 1) {
+            if (z > chunklength - 1)
+            {
                 return planet.GetBlock(new Vector3(x2, y2, z2 + 1), x, y, 0);
             }
 
-            if (z == -1) {
+            if (z == -1)
+            {
                 return planet.GetBlock(new Vector3(x2, y2, z2 - 1), x, y, 15);
             }
 
@@ -155,7 +162,7 @@ public class PlanetChunk : MonoBehaviour {
                 planet.SetBlock(new Vector3(x2, y2, z2 - 1), x, y, chunklength - 1, typenew);
             }
 
-            
+
 
         }
 
@@ -167,13 +174,14 @@ public class PlanetChunk : MonoBehaviour {
     }
 
     // Updates the planetchunk.
-    public void UpdatePlanetChunk () {
+    public void UpdatePlanetChunk()
+    {
 
         updates = updates + 1;
 
         if (Generated == true)
         {
-     
+
             meshData.Clear();
 
             for (int x = 0; x < chunklength; x++)
@@ -192,7 +200,7 @@ public class PlanetChunk : MonoBehaviour {
                 }
             }
 
-            
+
             meshData.Rebuild();
 
 
@@ -207,7 +215,7 @@ public class PlanetChunk : MonoBehaviour {
                         {
                             meshData = blocks[x, y, z].Blockdata(this, x, y, z, meshData);
                         }
-                        
+
                     }
                 }
             }
@@ -339,4 +347,53 @@ public class PlanetChunk : MonoBehaviour {
         }
     }
 
+    static float MoveWithinBlock(float pos, float norm, bool adjacent = false)
+    {
+        if (pos - (int)pos == 0.5f || pos - (int)pos == -0.5f)
+        {
+            if (adjacent)
+            {
+                pos += (norm / 2);
+            }
+            else
+            {
+                pos -= (norm / 2);
+            }
+        }
+
+        return (float)pos;
+    }
+
+    public void SetBlock(RaycastHit hit, BlockType type, bool adjacent = false)
+    {
+        Vector3 pos = GetBlockPos(hit, adjacent);
+
+        int x = (int)pos.x;
+        int y = (int)pos.y;
+        int z = (int)pos.z;
+
+        x = Mathf.RoundToInt(x);
+        y = Mathf.RoundToInt(y);
+        z = Mathf.RoundToInt(z);
+
+        SetBlock(x, y, z, type);
+    }
+
+    public Vector3 GetBlockPos(RaycastHit hit, bool adjacent = false)
+    {
+
+
+        Vector3 WorldSpace = new Vector3(
+        MoveWithinBlock(hit.point.x, hit.normal.x, adjacent),
+        MoveWithinBlock(hit.point.y, hit.normal.y, adjacent),
+        MoveWithinBlock(hit.point.z, hit.normal.z, adjacent)
+        );
+
+        Vector3 NewWorldSpace = new Vector3(WorldSpace.x - this.transform.position.x, WorldSpace.y - this.transform.position.y, WorldSpace.z - this.transform.position.z);
+
+        return NewWorldSpace;
+
+
+
+    }
 }
