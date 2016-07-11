@@ -114,7 +114,7 @@ public class PlanetChunk : MonoBehaviour {
 
         Debug.Log(x + " " + y + " " + z);
 
-        if (x != -1 && y != -1 && z != -1 && x < chunklength && y < chunklength && z < chunklength)
+        if (x > -1 && y > -1 && z > -1 && x < chunklength && y < chunklength && z < chunklength)
         {
             blocks[x, y, z].type = typenew;
             modified = true;
@@ -277,8 +277,7 @@ public class PlanetChunk : MonoBehaviour {
         }
 
         filter.sharedMesh = mesh;
-        coll.sharedMesh = colmesh;
-        colmesh.RecalculateNormals();
+        coll.sharedMesh = mesh;
         filter.sharedMesh.RecalculateNormals();
 
         firstrender = false;

@@ -3188,9 +3188,14 @@ Used if the native representation has been destroyed.</para>
         <para>Displays a Sprite for the UI System.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.UI.Image.alphaHitTestMinimumThreshold">
+      <summary>
+        <para>The alpha threshold specifies the minimum alpha a pixel must have for the event to considered a "hit" on the Image.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.UI.Image.eventAlphaThreshold">
       <summary>
-        <para>The alpha threshold specifying the minimum alpha a pixel must have for the event to be passed through.</para>
+        <para>The alpha threshold specifies the minimum alpha a pixel must have for the event to considered a "hit" on the Image.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.UI.Image.fillAmount">
@@ -4479,6 +4484,7 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
         <para>Find the correct RectMask2D for a given IClippable.</para>
       </summary>
       <param name="transform">Clippable to search from.</param>
+      <param name="clippable"></param>
     </member>
     <member name="M:UnityEngine.UI.MaskUtilities.GetRectMasksForClip(UnityEngine.UI.RectMask2D,System.Collections.Generic.List`1&lt;UnityEngine.UI.RectMask2D&gt;)">
       <summary>
@@ -4493,6 +4499,16 @@ Characters 0-9, . (dot), and - (dash / minus sign) are allowed. The dash is only
       </summary>
       <param name="transform"></param>
       <param name="stopAfter"></param>
+    </member>
+    <member name="M:UnityEngine.UI.MaskUtilities.IsDescendantOrSelf(UnityEngine.Transform,UnityEngine.Transform)">
+      <summary>
+        <para>Helper function to determine if the child is a descendant of father or is father.</para>
+      </summary>
+      <param name="father">The transform to compare against.</param>
+      <param name="child">The starting transform to search up the hierarchy.</param>
+      <returns>
+        <para>Is child equal to father or is a descendant.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.UI.MaskUtilities.Notify2DMaskStateChanged(UnityEngine.Component)">
       <summary>

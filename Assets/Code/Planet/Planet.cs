@@ -309,9 +309,9 @@ public class Planet : MonoBehaviour
         MoveWithinBlock(hit.point.z, hit.normal.z, adjacent)
         );
 
-        WorldSpace = new Vector3(WorldSpace.x - (chunk.Position.x * chunklength) - thisx, WorldSpace.y - (chunk.Position.y * chunklength) - thisy, WorldSpace.z - (chunk.Position.z * chunklength) - thisz);
+        Vector3 NewWorldSpace = new Vector3(WorldSpace.x - (chunk.Position.x * chunklength) - thisx, WorldSpace.y - (chunk.Position.y * chunklength) - thisy, WorldSpace.z - (chunk.Position.z * chunklength) - thisz);
 
-        return WorldSpace;
+        return NewWorldSpace;
 
 
 

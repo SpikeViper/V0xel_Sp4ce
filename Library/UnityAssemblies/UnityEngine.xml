@@ -4418,6 +4418,11 @@ Note: Every time you call the method with tolerance specified, a new instance of
         <para>AssetBundles let you stream additional assets via the WWW class and instantiate them at runtime. AssetBundles are created via BuildPipeline.BuildAssetBundle.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.AssetBundle.isStreamedSceneAssetBundle">
+      <summary>
+        <para>Return true if the AssetBundle is a streamed scene AssetBundle.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.AssetBundle.mainAsset">
       <summary>
         <para>Main asset that was supplied when building the asset bundle (Read Only).</para>
@@ -4720,6 +4725,11 @@ See Also: WWW.assetBundle, WWW.LoadFromCacheOrDownload.</param>
         <para>Routing target.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Audio.AudioMixer.updateMode">
+      <summary>
+        <para>How time should progress for this AudioMixer. Used during Snapshot transitions.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.Audio.AudioMixer.ClearFloat(System.String)">
       <summary>
         <para>Resets an exposed parameter to its initial value.</para>
@@ -4790,6 +4800,21 @@ See Also: WWW.assetBundle, WWW.LoadFromCacheOrDownload.</param>
         <para>Performs an interpolated transition towards this snapshot over the time interval specified.</para>
       </summary>
       <param name="timeToReach">Relative time after which this snapshot should be reached from any current state.</param>
+    </member>
+    <member name="T:UnityEngine.Audio.AudioMixerUpdateMode">
+      <summary>
+        <para>The mode in which an AudioMixer should update its time.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Audio.AudioMixerUpdateMode.Normal">
+      <summary>
+        <para>Update the AudioMixer with scaled game time.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.Audio.AudioMixerUpdateMode.UnscaledTime">
+      <summary>
+        <para>Update the AudioMixer with unscaled realtime.</para>
+      </summary>
     </member>
     <member name="T:UnityEngine.AudioChorusFilter">
       <summary>
@@ -6954,6 +6979,11 @@ The actual rendering path might be different from the user-specified renderingPa
         <para>The near clipping plane distance.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Camera.nonJitteredProjectionMatrix">
+      <summary>
+        <para>Get or set the raw projection matrix with no camera offset (no jittering). </para>
+      </summary>
+    </member>
     <member name="F:UnityEngine.Camera.onPostRender">
       <summary>
         <para>Event that is fired after any camera finishes rendering.</para>
@@ -7389,6 +7419,11 @@ The values passed to stereoTargetEye are found in the StereoTargetEyeMask enum. 
     <member name="P:UnityEngine.Canvas.renderOrder">
       <summary>
         <para>The render order in which the canvas is being emitted to the scene.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Canvas.rootCanvas">
+      <summary>
+        <para>Returns the Canvas closest to root, by checking through each parent and returning the last canvas found. If no other canvas is found then the canvas will return itself.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Canvas.scaleFactor">
@@ -10056,8 +10091,8 @@ Sometimes it is not possible to project (for example when the joints form a cycl
       <summary>
         <para>Actually apply all previous SetPixel and SetPixels changes.</para>
       </summary>
-      <param name="updateMipmaps">Should all mipmap levels be updated?</param>
-      <param name="makeNoLongerReadable">Should the Cubemap texture data be readable/modifiable after changes are applied?</param>
+      <param name="updateMipmaps">When set to true, mipmap levels are recalculated.</param>
+      <param name="makeNoLongerReadable">When set to true, system memory copy of a texture is released.</param>
     </member>
     <member name="M:UnityEngine.Cubemap.#ctor(System.Int32,UnityEngine.TextureFormat,System.Boolean)">
       <summary>
@@ -23792,6 +23827,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Shadow mapping normal-based bias.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Light.shadowResolution">
+      <summary>
+        <para>Control the resolution of the ShadowMap.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Light.shadows">
       <summary>
         <para>How this light casts shadows</para>
@@ -23981,6 +24021,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>The mode in which the interpolated light probe positions are generated.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.LightProbeProxyVolume.refreshMode">
+      <summary>
+        <para>Sets the way the light probe volume will refresh.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.LightProbeProxyVolume.resolutionMode">
       <summary>
         <para>The resolution mode for generating the grid of interpolated light probes.</para>
@@ -24026,6 +24071,27 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Divide the volume in cells based on resolution and generate interpolated light probe positions in the corner/edge of the cells.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.LightProbeProxyVolume.RefreshMode">
+      <summary>
+        <para>An enum describing the way a light probe volume refreshes in the Player.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightProbeProxyVolume.RefreshMode.Automatic">
+      <summary>
+        <para>Automatically detects updates in light probes and triggers an update of the light probe volume.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightProbeProxyVolume.RefreshMode.EveryFrame">
+      <summary>
+        <para>Causes Unity to update the light probe volume every frame. 
+Note that updating a light probe volume every frame may be costly. The cost depends on the resolution of the interpolated light probe grid. The light probe interpolation is multi-threaded.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightProbeProxyVolume.RefreshMode.ViaScripting">
+      <summary>
+        <para>Using this option indicates that the light probe volume will never be automatically updated by Unity. This is useful if you wish to completely control the light probe volume refresh behavior via scripting.</para>
+      </summary>
+    </member>
     <member name="T:UnityEngine.LightProbeProxyVolume.ResolutionMode">
       <summary>
         <para>The resolution mode for generating a grid of interpolated light probes.</para>
@@ -24039,6 +24105,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     <member name="F:UnityEngine.LightProbeProxyVolume.ResolutionMode.Custom">
       <summary>
         <para>The custom mode will let the user specify the 3D grid resolution.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.LightProbeProxyVolume.Update">
+      <summary>
+        <para>Triggers an update of the light probe volume.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.LightProbes">
@@ -24092,6 +24163,36 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     <member name="F:UnityEngine.LightRenderMode.ForceVertex">
       <summary>
         <para>Force the Light to be a vertex light.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.LightShadowResolution">
+      <summary>
+        <para>Shadow resolution options for a Light.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightShadowResolution.FromQualitySettings">
+      <summary>
+        <para>Use resolution from QualitySettings (default).</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightShadowResolution.High">
+      <summary>
+        <para>Quarter resolution compared to Very High.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightShadowResolution.Low">
+      <summary>
+        <para>Quarter resolution compared to Medium.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightShadowResolution.Medium">
+      <summary>
+        <para>Quarter resolution compared to High.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.LightShadowResolution.VeryHigh">
+      <summary>
+        <para>Best resolution for this light type (based on light screen space coverage).</para>
       </summary>
     </member>
     <member name="T:UnityEngine.LightShadows">
@@ -24963,6 +25064,22 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
       <param name="color">Color value to set.</param>
     </member>
+    <member name="M:UnityEngine.Material.SetColorArray(System.String,UnityEngine.Color[])">
+      <summary>
+        <para>Set a color array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
+      <param name="values">Array of values to set.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetColorArray(System.Int32,UnityEngine.Color[])">
+      <summary>
+        <para>Set a color array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
+      <param name="values">Array of values to set.</param>
+    </member>
     <member name="M:UnityEngine.Material.SetFloat(System.String,System.Single)">
       <summary>
         <para>Set a named float value.</para>
@@ -24978,6 +25095,22 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       <param name="propertyName">Property name, e.g. "_Glossiness".</param>
       <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
       <param name="value">Float value to set.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetFloatArray(System.String,System.Single[])">
+      <summary>
+        <para>Set a float array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
+      <param name="values">Array of values to set.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetFloatArray(System.Int32,System.Single[])">
+      <summary>
+        <para>Set a float array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
+      <param name="values">Array of values to set.</param>
     </member>
     <member name="M:UnityEngine.Material.SetInt(System.String,System.Int32)">
       <summary>
@@ -25010,6 +25143,22 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       <param name="propertyName">Property name, e.g. "_CubemapRotation".</param>
       <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
       <param name="matrix">Matrix value to set.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetMatrixArray(System.String,UnityEngine.Matrix4x4[])">
+      <summary>
+        <para>Set a matrix array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="values">Array of values to set.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetMatrixArray(System.Int32,UnityEngine.Matrix4x4[])">
+      <summary>
+        <para>Set a matrix array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="values">Array of values to set.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
     </member>
     <member name="M:UnityEngine.Material.SetOverrideTag(System.String,System.String)">
       <summary>
@@ -25072,6 +25221,22 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       <param name="propertyName">Property name, e.g. "_WaveAndDistance".</param>
       <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
       <param name="vector">Vector value to set.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetVectorArray(System.String,UnityEngine.Vector4[])">
+      <summary>
+        <para>Set a vector array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="values">Array of values to set.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
+    </member>
+    <member name="M:UnityEngine.Material.SetVectorArray(System.Int32,UnityEngine.Vector4[])">
+      <summary>
+        <para>Set a vector array property.</para>
+      </summary>
+      <param name="name">Property name.</param>
+      <param name="values">Array of values to set.</param>
+      <param name="nameID">Property name ID, use Shader.PropertyToID to get it.</param>
     </member>
     <member name="T:UnityEngine.MaterialGlobalIlluminationFlags">
       <summary>
@@ -26153,6 +26318,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       <param name="indices"></param>
       <param name="topology"></param>
       <param name="submesh"></param>
+      <param name="calculateBounds"></param>
     </member>
     <member name="M:UnityEngine.Mesh.SetNormals(System.Collections.Generic.List`1&lt;UnityEngine.Vector3&gt;)">
       <summary>
@@ -26172,6 +26338,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       </summary>
       <param name="triangles"></param>
       <param name="submesh"></param>
+      <param name="calculateBounds"></param>
     </member>
     <member name="M:UnityEngine.Mesh.SetTriangles(System.Int32[],System.Int32)">
       <summary>
@@ -26179,6 +26346,7 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
       </summary>
       <param name="triangles"></param>
       <param name="submesh"></param>
+      <param name="calculateBounds"></param>
     </member>
     <member name="M:UnityEngine.Mesh.SetUVs(System.Int32,System.Collections.Generic.List`1&lt;UnityEngine.Vector2&gt;)">
       <summary>
@@ -27681,6 +27849,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Validate parameters of connection config. Will throw exceptions if parameters are incorrect.</para>
       </summary>
       <param name="config"></param>
+    </member>
+    <member name="P:UnityEngine.Networking.ConnectionConfig.WebSocketReceiveBufferMaxSize">
+      <summary>
+        <para>Defines received buffer size for web socket host; you should set this to the size of the biggest legal frame that you support. If the frame size is exceeded, there is no error, but the buffer will spill to the user callback when full. In case zero 4k buffer will be used. Default value is zero.</para>
+      </summary>
     </member>
     <member name="T:UnityEngine.Networking.ConnectionSimulatorConfig">
       <summary>
@@ -29372,7 +29545,7 @@ Analogous to the version parameter for WWW.LoadFromCacheOrDownload.</param>
       <summary>
         <para>Retrieves the value of a custom request header.</para>
       </summary>
-      <param name="name">Name of the custom request header. Case-sensitive.</param>
+      <param name="name">Name of the custom request header. Case-insensitive.</param>
       <returns>
         <para>The value of the custom request header. If no custom header with a matching name has been set, returns an empty string.</para>
       </returns>
@@ -29381,7 +29554,7 @@ Analogous to the version parameter for WWW.LoadFromCacheOrDownload.</param>
       <summary>
         <para>Retrieves the value of a response header from the latest HTTP response received.</para>
       </summary>
-      <param name="name">The name of the HTTP header to retrieve. Case-sensitive.</param>
+      <param name="name">The name of the HTTP header to retrieve. Case-insensitive.</param>
       <returns>
         <para>The value of the HTTP header from the latest HTTP response. If no header with a matching name has been received, or no responses have been received, returns null.</para>
       </returns>
@@ -31339,8 +31512,8 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <summary>
         <para>Manually query the curve to calculate values based on what mode it is in.</para>
       </summary>
-      <param name="time">Percentage along the curve when mode is set to an appropriate value (0-1).</param>
-      <param name="lerpFactor">Blend between the 2 curves/constants when mode is set to an appropriate value (0-1).</param>
+      <param name="time">Percentage along the curve (Valid when ParticleSystem.MinMaxCurve.mode is set to ParticleSystemCurveMode.Curve or ParticleSystemCurveMode.TwoCurves).</param>
+      <param name="lerpFactor">Blend between the 2 curves/constants (Valid when ParticleSystem.MinMaxCurve.mode is set to ParticleSystemCurveMode.TwoConstants or ParticleSystemCurveMode.TwoCurves).</param>
       <returns>
         <para>Calculated curve/constant value.</para>
       </returns>
@@ -31349,8 +31522,8 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <summary>
         <para>Manually query the curve to calculate values based on what mode it is in.</para>
       </summary>
-      <param name="time">Percentage along the curve when mode is set to an appropriate value (0-1).</param>
-      <param name="lerpFactor">Blend between the 2 curves/constants when mode is set to an appropriate value (0-1).</param>
+      <param name="time">Percentage along the curve (Valid when ParticleSystem.MinMaxCurve.mode is set to ParticleSystemCurveMode.Curve or ParticleSystemCurveMode.TwoCurves).</param>
+      <param name="lerpFactor">Blend between the 2 curves/constants (Valid when ParticleSystem.MinMaxCurve.mode is set to ParticleSystemCurveMode.TwoConstants or ParticleSystemCurveMode.TwoCurves).</param>
       <returns>
         <para>Calculated curve/constant value.</para>
       </returns>
@@ -31425,8 +31598,8 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <summary>
         <para>Manually query the gradient to calculate colors based on what mode it is in.</para>
       </summary>
-      <param name="time">Percentage along the gradient when mode is set to an appropriate value (0-1).</param>
-      <param name="lerpFactor">Blend between the 2 gradients/colors when mode is set to an appropriate value (0-1).</param>
+      <param name="time">Percentage along the gradient (Valid when ParticleSystem.MinMaxGradient.mode is set to ParticleSystemGradientMode.Gradient or ParticleSystemGradientMode.TwoGradients).</param>
+      <param name="lerpFactor">Blend between the 2 gradients/colors (Valid when ParticleSystem.MinMaxGradient.mode is set to ParticleSystemGradientMode.TwoColors or ParticleSystemGradientMode.TwoGradients).</param>
       <returns>
         <para>Calculated gradient/color value.</para>
       </returns>
@@ -31435,8 +31608,8 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <summary>
         <para>Manually query the gradient to calculate colors based on what mode it is in.</para>
       </summary>
-      <param name="time">Percentage along the gradient when mode is set to an appropriate value (0-1).</param>
-      <param name="lerpFactor">Blend between the 2 gradients/colors when mode is set to an appropriate value (0-1).</param>
+      <param name="time">Percentage along the gradient (Valid when ParticleSystem.MinMaxGradient.mode is set to ParticleSystemGradientMode.Gradient or ParticleSystemGradientMode.TwoGradients).</param>
+      <param name="lerpFactor">Blend between the 2 gradients/colors (Valid when ParticleSystem.MinMaxGradient.mode is set to ParticleSystemGradientMode.TwoColors or ParticleSystemGradientMode.TwoGradients).</param>
       <returns>
         <para>Calculated gradient/color value.</para>
       </returns>
@@ -31707,13 +31880,14 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>Emit from a single material, or the whole mesh.</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.ParticleSystem.Simulate(System.Single,System.Boolean,System.Boolean)">
+    <member name="M:UnityEngine.ParticleSystem.Simulate(System.Single,System.Boolean,System.Boolean,System.Boolean)">
       <summary>
         <para>Fastforwards the particle system by simulating particles over given period of time, then pauses it.</para>
       </summary>
       <param name="t">Time to fastforward the particle system.</param>
       <param name="withChildren">Fastforward all child particle systems as well.</param>
       <param name="restart">Restart and start from the beginning.</param>
+      <param name="fixedTimeStep">Only update the system at fixed intervals, based on the value in "Fixed Time" in the Time options.</param>
     </member>
     <member name="T:UnityEngine.ParticleSystem.SizeBySpeedModule">
       <summary>
@@ -32187,6 +32361,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>Mesh used as particle instead of billboarded texture.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystemRenderer.meshCount">
+      <summary>
+        <para>The number of meshes being used for particle rendering.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.ParticleSystemRenderer.minParticleSize">
       <summary>
         <para>Clamp the minimum particle size.</para>
@@ -32221,6 +32400,29 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <summary>
         <para>How much are the particles stretched depending on "how fast they move".</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.GetMeshes(UnityEngine.Mesh[])">
+      <summary>
+        <para>Set the array of meshes used as particles.</para>
+      </summary>
+      <param name="meshes">This array will be populated with the list of meshes being used for particle rendering.</param>
+      <returns>
+        <para>The number of meshes actually written to the destination array.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.SetMeshes(UnityEngine.Mesh[])">
+      <summary>
+        <para>Set an array of meshes used as particles instead of a billboarded texture.</para>
+      </summary>
+      <param name="meshes">Array of meshes to be used.</param>
+      <param name="size">Number of elements from the mesh array to be applied.</param>
+    </member>
+    <member name="M:UnityEngine.ParticleSystemRenderer.SetMeshes(UnityEngine.Mesh[],System.Int32)">
+      <summary>
+        <para>Set an array of meshes used as particles instead of a billboarded texture.</para>
+      </summary>
+      <param name="meshes">Array of meshes to be used.</param>
+      <param name="size">Number of elements from the mesh array to be applied.</param>
     </member>
     <member name="T:UnityEngine.ParticleSystemRenderMode">
       <summary>
@@ -38374,6 +38576,14 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
       <param name="discardColor">Should the colour buffer be discarded?</param>
       <param name="discardDepth">Should the depth buffer be discarded?</param>
     </member>
+    <member name="M:UnityEngine.RenderTexture.GetNativeDepthBufferPtr">
+      <summary>
+        <para>Retrieve a native (underlying graphics API) pointer to the depth buffer resource.</para>
+      </summary>
+      <returns>
+        <para>Pointer to an underlying graphics API depth buffer resource.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.RenderTexture.GetTemporary(System.Int32,System.Int32,System.Int32,UnityEngine.RenderTextureFormat,UnityEngine.RenderTextureReadWrite,System.Int32)">
       <summary>
         <para>Allocate a temporary render texture.</para>
@@ -42196,6 +42406,11 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
         <para>Is an accelerometer available on the device?</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.SystemInfo.supportsAudio">
+      <summary>
+        <para>Is there an Audio device available for playback?</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.SystemInfo.supportsComputeShaders">
       <summary>
         <para>Are compute shaders supported? (Read Only)</para>
@@ -42219,6 +42434,11 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
     <member name="P:UnityEngine.SystemInfo.supportsLocationService">
       <summary>
         <para>Is the device capable of reporting its location?</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.SystemInfo.supportsMotionVectors">
+      <summary>
+        <para>Are motion vectors supported.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.SystemInfo.supportsRawShadowDepthSampling">
@@ -43497,8 +43717,11 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
     </member>
     <member name="M:UnityEngine.Texture.GetNativeTexturePtr">
       <summary>
-        <para>Retrieve native ('hardware') pointer to a texture.</para>
+        <para>Retrieve a native (underlying graphics API) pointer to the texture resource.</para>
       </summary>
+      <returns>
+        <para>Pointer to an underlying graphics API texture resource.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.Texture.SetGlobalAnisotropicFilteringLimits(System.Int32,System.Int32)">
       <summary>
@@ -43536,8 +43759,8 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
       <summary>
         <para>Actually apply all previous SetPixel and SetPixels changes.</para>
       </summary>
-      <param name="updateMipmaps"></param>
-      <param name="makeNoLongerReadable"></param>
+      <param name="updateMipmaps">When set to true, mipmap levels are recalculated.</param>
+      <param name="makeNoLongerReadable">When set to true, system memory copy of a texture is released.</param>
     </member>
     <member name="M:UnityEngine.Texture2D.Compress(System.Boolean)">
       <summary>
@@ -43769,11 +43992,12 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
         <para>Texture format (Read Only).</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.Texture2DArray.Apply(System.Boolean)">
+    <member name="M:UnityEngine.Texture2DArray.Apply(System.Boolean,System.Boolean)">
       <summary>
         <para>Actually apply all previous SetPixels changes.</para>
       </summary>
-      <param name="updateMipmaps"></param>
+      <param name="updateMipmaps">When set to true, mipmap levels are recalculated.</param>
+      <param name="makeNoLongerReadable">When set to true, system memory copy of a texture is released.</param>
     </member>
     <member name="M:UnityEngine.Texture2DArray.#ctor(System.Int32,System.Int32,System.Int32,UnityEngine.TextureFormat,System.Boolean)">
       <summary>
@@ -43848,11 +44072,12 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
         <para>The format of the pixel data in the texture (Read Only).</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.Texture3D.Apply(System.Boolean)">
+    <member name="M:UnityEngine.Texture3D.Apply(System.Boolean,System.Boolean)">
       <summary>
         <para>Actually apply all previous SetPixels changes.</para>
       </summary>
-      <param name="updateMipmaps"></param>
+      <param name="updateMipmaps">When set to true, mipmap levels are recalculated.</param>
+      <param name="makeNoLongerReadable">When set to true, system memory copy of a texture is released.</param>
     </member>
     <member name="M:UnityEngine.Texture3D.#ctor(System.Int32,System.Int32,System.Int32,UnityEngine.TextureFormat,System.Boolean)">
       <summary>
@@ -44654,6 +44879,16 @@ Useful for restarting a trail from a new position.</para>
     <member name="P:UnityEngine.Transform.hasChanged">
       <summary>
         <para>Has the transform changed since the last time the flag was set to 'false'?</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Transform.hierarchyCapacity">
+      <summary>
+        <para>The transform capacity of the transform's hierarchy data structure.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Transform.hierarchyCount">
+      <summary>
+        <para>The number of transforms in the transform's hierarchy data structure.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Transform.localEulerAngles">

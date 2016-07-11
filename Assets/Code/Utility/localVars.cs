@@ -5,7 +5,7 @@ using System;
 
 public static class localVars {
 
-    public static int chunklength = 16; //As of now, this CANNOT BE CHANGED. This is legacy only. You have been warned.
+    public static int chunklength = 16; //As of now, this CANNOT BE CHANGED. This is legacy only. You have been warned. Unless you want massive lag spikes.
     public static int poolSize = 5000;
     public static GameObject chunkprefab;
     public static Chunkpool ChunkPool;
