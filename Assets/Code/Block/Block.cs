@@ -22,9 +22,7 @@ public class Block
     [System.SerializableAttribute()]
     public struct Tile { public int x; public int y;}
 
-    /// <summary>
-    /// Holds the state of each side of the block (Solid = true, Non-Solid = false)
-    /// </summary>
+    // Holds the state of each side of the block (Solid = true, Non-Solid = false)
     public bool up; public bool down; public bool east; public bool west; public bool north; public bool south;
 
 
@@ -133,21 +131,6 @@ public class Block
 
     }
 
-    //Deferred mesh method
-
-    //protected MeshData FaceDataUp
-    //    (PlanetChunk planetchunk, int x, int y, int z, MeshData meshData)
-    //{
-    //    meshData.AddVertex(new Vector3(x - 0.5f, y + 0.5f, z + 0.5f));
-    //    meshData.AddVertex(new Vector3(x + 0.5f, y + 0.5f, z + 0.5f));
-    //    meshData.AddVertex(new Vector3(x + 0.5f, y + 0.5f, z - 0.5f));
-    //    meshData.AddVertex(new Vector3(x - 0.5f, y + 0.5f, z - 0.5f));
-    //
-    //    meshData.AddQuadTriangles();
-    //    meshData.AddUVRange(FaceUVs(Direction.up));
-    //    return meshData;
-    //}
-
     /// <summary>
     /// Gets whether or not the blocks next to this one are solid. Used to determine which sides to render.
     /// </summary>
@@ -215,11 +198,19 @@ public class Block
 
     }
 
+    /// <summary>
+    /// Sets the type of this block.
+    /// </summary>
+    /// <param name="newtype">The BlockType you are setting this to.</param>
     public void SetType(BlockType newtype)
     {
         this.type = newtype;
     }
 
+    /// <summary>
+    /// Gets the BlockType of this block
+    /// </summary>
+    /// <returns>The BockType of this block</returns>
     public BlockType GetType()
     {
         return this.type;

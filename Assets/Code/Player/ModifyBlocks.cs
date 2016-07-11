@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This whole class will be replaced by a proper player script soon.
+/// </summary>
 public class ModifyBlocks : MonoBehaviour
 {
 
